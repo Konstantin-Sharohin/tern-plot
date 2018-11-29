@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пробна функція</title>
+    <script src="Libraries/jquery.min.js"></script>
+    <script src="Libraries/math.js"></script>
+    <script src="Libraries/d3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Styles/ternPlotStyle.css" />
+    <script src='./src/main.js'></script>
+</head>
+
+<body>
+    <header>
+        <h2>Функція y(x) = 10 * exp(-(1 + a) * 5) - 10^(5) * exp(-(2 + b) * 5) - 10^(7) * exp(-(3 + c) * 5)</h2>
+        <div>Знайти значення &Delta;, при яких значення функції переходять в додатні</div><br>
+        <div>a = b = c = 1; t = 5</div><br>
+        <button id="count">Розрахувати</button>
+    </header>
+    <div id="plot"></div>
+    <table id="result">
+        <tr id="generate">
+            <th>&Delta;<sub>1</sub></th>
+            <th>&Delta;<sub>2</sub></th>
+            <th>&Delta;<sub>3</sub></th>
+            <th>Значення функції</th>
+        </tr>
+    </table>
+</body>
+
+</html>
