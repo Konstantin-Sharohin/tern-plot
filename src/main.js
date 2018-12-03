@@ -1,17 +1,22 @@
 $(window).on("load", function () {
-    let btn = $("#count"),
+
+    let btn = $("#countForm"),
         generate = $("#generate"),
-        a = 1,
-        b = 1,
-        c = 1,
+        a1 = 1.0000000000000000000000,
+        a2 = -1.000122608749350000000000000,
+        a3 = 0.0001226087493510350000000,
         dataBase = [],
         func,
-        t = 5;
+        t = 1 * math.exp(-10);
 
     btn.on("click", function (event) {
+        event.preventDefault();
+        d3.select("#plot").select("svg").remove();
+        dataBase.length = 0;
+        $(".generated").remove();
 
-        //$(".generated").remove();
-        btn.prop("disabled", true);
+
+        //btn.prop("disabled", true);
         //for (let i = 0; i <= 3; i++) {
 
         for (let i = 0; i < 100; i++) {
@@ -20,26 +25,24 @@ $(window).on("load", function () {
                 let rndNumber2 = math.random(0, 36);
                 for (let k = 0; k < 1; k++) {
                     let rndNumber3 = math.random(0, 36);
-                    func = 10 * math.exp(-(a + rndNumber1 * t)) - (10 ** 5) * math.exp(-(b +
-                        rndNumber2 *
-                        t)) - (10 ** 7) * math.exp(-(c + rndNumber3 * t));
+                    func = a1 * math.exp(-rndNumber1 * t) - a2 * math.exp(-rndNumber2 * t) - a3 * math.exp(-rndNumber3 * t);
                     let calculated = math.eval(func);
-                    if ((calculated > 0) && (calculated < 1)) {
-                        let newRow1 = "<tr class='generated1'>" + "<td>" +
-                            rndNumber1 + "</td>" +
-                            "<td>" + rndNumber2 +
-                            "</td>" +
-                            "<td>" +
-                            rndNumber3 + "</td>" + "<td>" + calculated + "</td>" +
-                            "</tr>";
-                        generate.after(newRow1);
-                        dataBase.push({
-                            "X1": rndNumber1,
-                            "X2": rndNumber2,
-                            "X3": rndNumber3,
-                            "label": "point" + i
-                        });
-                    }
+                    // if ((calculated > 0) && (calculated < 1)) {
+                    let newRow1 = "<tr class='generated'>" + "<td>" +
+                        rndNumber1 + "</td>" +
+                        "<td>" + rndNumber2 +
+                        "</td>" +
+                        "<td>" +
+                        rndNumber3 + "</td>" + "<td>" + calculated + "</td>" +
+                        "</tr>";
+                    generate.after(newRow1);
+                    dataBase.push({
+                        "X1": rndNumber1,
+                        "X2": rndNumber2,
+                        "X3": rndNumber3,
+                        "label": "point" + i
+                    });
+                    //}
                 }
             }
         }
@@ -251,9 +254,9 @@ $(window).on("load", function () {
             plot.getTripple = function (x, y) {
                 //TODO, get percentages for a give x, y
             }
-                return plot;
-            }
-        
+            return plot;
+        }
+
 
         //ACTIVATE
         let plot_opts = {

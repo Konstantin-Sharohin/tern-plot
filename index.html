@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пробна функція</title>
+    <title>Ядерне датування</title>
     <script src="Libraries/jquery.min.js"></script>
     <script src="Libraries/math.js"></script>
     <script src="Libraries/d3.min.js"></script>
@@ -14,18 +14,35 @@
 
 <body>
     <header>
-        <h2>Функція y(x) = 10 * exp(-(1 + a) * 5) - 10^(5) * exp(-(2 + b) * 5) - 10^(7) * exp(-(3 + c) * 5)</h2>
-        <div>Знайти значення &Delta;, при яких значення функції переходять в додатні</div><br>
-        <div>a = b = c = 1; t = 5</div><br>
-        <button id="count">Розрахувати</button>
+        <form id='dataForm' action="#" method="post">
+            <hgroup>
+                <h2>Розрахунок виразу</h2>
+                <h4>P0= A1*EXP(-lamda1*t)+ A2*EXP(-lamda2*t)+ A3*EXP(-lamda3*t)</h4>
+            </hgroup>
+            <div class="data"><span class="enterValues">Введіть значення</span>
+                <div><span>lambda1</span> = <input type="number" class="input" name="lambda1" form="dataForm" required autofocus></div>
+                <div><span>lambda2</span> = <input type="number" class="input" name="lambda2" form="dataForm" required></div>
+                <div><span>lambda3</span> = <input type="number" class="input" name="lambda3" form="dataForm" required></div>
+                <div><span>A1</span> = <input type="number" class="input" name="a1" form="dataForm" required></div>
+                <div><span>A2</span> = <input type="number" class="input" name="a2" form="dataForm" required></div>
+                <div><span>A3</span> = <input type="number" class="input" name="a3" form="dataForm" required></div>
+                <div><span>t</span> = <input type="number" class="input" name="t" form="dataForm" required></div>
+            </div>
+            <button id="countForm" type="submit" form="dataForm">Розрахувати</button>
+        </form>
     </header>
+    <div class="goalTitle">Завдання:
+        <hr>
+    </div>
+    <div class="goal">Знайти значення <span>lambda</span>, при яких вираз для <span>Р0</span> перейде в область
+        додатних значень</div>
     <div id="plot"></div>
     <table id="result">
         <tr id="generate">
-            <th>&Delta;<sub>1</sub></th>
-            <th>&Delta;<sub>2</sub></th>
-            <th>&Delta;<sub>3</sub></th>
-            <th>Значення функції</th>
+            <th>lambda<sub>1</sub></th>
+            <th>lambda<sub>2</sub></th>
+            <th>lambda<sub>3</sub></th>
+            <th>Значення виразу</th>
         </tr>
     </table>
 </body>
