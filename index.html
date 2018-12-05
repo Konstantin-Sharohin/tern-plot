@@ -17,16 +17,17 @@
         <form id='dataForm' action="#" method="post">
             <hgroup>
                 <h2>Розрахунок виразу</h2>
-                <h4>P0= A1*EXP(-lamda1*t)+ A2*EXP(-lamda2*t)+ A3*EXP(-lamda3*t)</h4>
+                <h4>P0= <span>A1</span> * EXP(-<span>lambda1</span> * <span>t</span>) + <span>A2</span> * EXP(-<span>lambda2</span> * <span>t</span>) + <span>A3</span> * EXP(-<span>lambda3</span> * <span>t</span>)</h4>
             </hgroup>
             <div class="data"><span class="enterValues">Введіть значення</span>
-                <div><span>lambda1</span> = <input type="number" class="input" name="lambda1" form="dataForm" required autofocus></div>
-                <div><span>lambda2</span> = <input type="number" class="input" name="lambda2" form="dataForm" required></div>
-                <div><span>lambda3</span> = <input type="number" class="input" name="lambda3" form="dataForm" required></div>
-                <div><span>A1</span> = <input type="number" class="input" name="a1" form="dataForm" required></div>
-                <div><span>A2</span> = <input type="number" class="input" name="a2" form="dataForm" required></div>
-                <div><span>A3</span> = <input type="number" class="input" name="a3" form="dataForm" required></div>
-                <div><span>t</span> = <input type="number" class="input" name="t" form="dataForm" required></div>
+                <div><span>lambda1</span> = <input type="text" class="input" name="lambda1" form="dataForm" value='4.92E-11' required autofocus></div>
+                <div><span>lambda2</span> = <input type="text" class="input" name="lambda2" form="dataForm" value='1.21E-01' required></div>
+                <div><span>lambda3</span> = <input type="text" class="input" name="lambda3" form="dataForm" value='9.87E+02'required></div>
+                <div><span>A1</span> = <input type="text" class="input" name="a1" form="dataForm" value='1.0000000000000000000000' required></div>
+                <div><span>A2</span> = <input type="text" class="input" name="a2" form="dataForm" value='-1.000122608749350000000000000' required></div>
+                <div><span>A3</span> = <input type="text" class="input" name="a3" form="dataForm" value='0.0001226087493510350000000' required></div>
+                <div><span>t</span> = <input type="text" class="input" name="t" form="dataForm" value='1.0E-10' required></div>
+                <div><span>Діапазон</span> = <input type="text" class="input" name="lambdaRange" form="dataForm" value='0' required></div>
             </div>
             <button id="countForm" type="submit" form="dataForm">Розрахувати</button>
         </form>
