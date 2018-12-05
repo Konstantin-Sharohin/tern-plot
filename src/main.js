@@ -29,7 +29,7 @@ $(window).on("load", function () {
             lambdaMin = parseFloat(inputLambdaMin),
             rndNumber1, rndNumber2, rndNumber3;
 
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 10000; i++) {
             rndNumber1 = math.random(lambdaMin, setLambda1);
             for (let j = 0; j < 1; j++) {
                 rndNumber2 = math.random(lambdaMin, setLambda2);
@@ -37,7 +37,7 @@ $(window).on("load", function () {
                     rndNumber3 = math.random(lambdaMin, setLambda3);
                     func = a1 * math.exp(-rndNumber1 * t) + a2 * math.exp(-rndNumber2 * t) + a3 * math.exp(-rndNumber3 * t);
                     let calculated = math.eval(func);
-                    if ((calculated > 0) && (calculated < 1e-10)) {
+                   if ((calculated > 0) && (calculated < 1e-10)) {
                         let newRow1 = "<tr class='generated'>" + "<td>" +
                             rndNumber1 + "</td>" +
                             "<td>" + rndNumber2 +
@@ -233,41 +233,33 @@ $(window).on("load", function () {
                 
             }
 
-            plot.data = function (data, accessor, bindBy) { //bind by is the dataset property used as an id for the join
+            plot.data = function(data, accessor, bindBy){ //bind by is the dataset property used as an id for the join
                 plot.dataset = data;
-                console.log('data: ' + data);
-                let circles = svg.selectAll("circle")
-                    .data(data.map(function (d) {
-                        
-                        return coord(accessor(d));
-                    }), function (d, i) {
-                        if (bindBy) {
+        
+                var circles = svg.selectAll("circle")
+                    .data( data.map( function(d){ return coord(accessor(d)); }), function(d,i){
+                        if(bindBy){
                             return plot.dataset[i][bindBy];
                         }
                         return i;
-                    });
-
+                    } );
+        
                 circles.enter().append("circle");
-
-                circles.transition().attr("cx", function (d) {
-                    
-                    return d[0];
-                })
-                    .attr("cy", function (d) {
-                        
-                        return d[1];
-                    })
-                    .attr("r", 5);
-                    
+        
+                circles.transition().attr("cx", function (d) { return d[0]; })
+                    .attr("cy", function (d) { return d[1]; })
+                    .attr("r", 6);
+        
                 return this;
-            };
-
+            }
+        
             plot.getPosition = coord;
-            plot.getTripple = function (x, y) {
+            plot.getTripple = function(x, y){
                 //TODO, get percentages for a give x, y
             }
+        
             return plot;
-        };
+        }
 
 
         //ACTIVATE
@@ -284,7 +276,7 @@ $(window).on("load", function () {
             minor_axis_ticks: d3.range(-50, 51, 5)
         };
 
-        ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3, d.label]}, 'label' );
+        ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3]}, 'label' );
         
         event.stopPropagation();
     });
