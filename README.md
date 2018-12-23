@@ -1,5 +1,5 @@
 # Konstantin-Sharohin.github.io
 tern-plot-application
 
-Actually, this page was made for a specific task in the field of physics. 
-It is a simple web-app, allowing to calculate the given formula and visualize the data on the tern plot and in the table.
+This page was made for a specific task in the field of physics (to encrease the precision of the element`s half-life time determination). 
+It contains the first version of the web-app, that allows to calculate via the proposed formula the half-life time range and to visualize the data on the tern plot.

@@ -38,6 +38,15 @@
                     lambdaMin = parseFloat(inputLambdaMin),
                     setIterations = parseFloat(inputIterations),
                     rndNumber1, rndNumber2, rndNumber3;
+                    Big(setLambda1);
+                    Big(setLambda2);
+                    Big(setLambda3);
+                    Big(a1);
+                    Big(a2);
+                    Big(a3);
+                    Big(t);
+                    console.log('setLambda1 ' + setLambda1 + 'setLambda2 ' + 
+                    setLambda2 + 'setLambda3 ' + setLambda3 + 'a1 ' + a1 + 't ' + t + 'a2 ' + a2 + 'a3 ' + a3);
         
                 generator(setIterations, rndNumber1, lambdaMin, setLambda1, rndNumber2, setLambda2, rndNumber3, setLambda3, func, a1, t, a2, a3, generate, dataBase);
         
@@ -59,7 +68,9 @@
                 trimWhitespace: false
             });
         });
+
     });
+
 
 })(window);
     
