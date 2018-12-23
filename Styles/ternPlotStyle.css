@@ -101,6 +101,10 @@ table {
     padding: 15px;
 }
 
+#plot {
+    width: 100%;
+    height: 100%;
+}
 
 line.tick {
     stroke-width: 0.5;

@@ -8,8 +8,8 @@ function ternaryPlot(selector, userOpt) {
     };
 
     let opt = {
-        width: 700,
-        height: 700,
+        width: 650,
+        height: 650,
         side: 700,
         margin: {
             top: 10,
@@ -40,9 +40,8 @@ function ternaryPlot(selector, userOpt) {
         [opt.margin.left, h + opt.margin.top], // a
         [w + opt.margin.left, h + opt.margin.top], //b 
         [(w / 2) + opt.margin.left, opt.margin.top]
-    ]; //c
+    ];
 
-    //axis names
     axes.selectAll('.axis-title')
         .data(opt.axis_labels)
         .enter()
@@ -71,8 +70,6 @@ function ternaryPlot(selector, userOpt) {
                 y = opt.axisLabelMargin * Math.sin(theta * 0.0174532925);
             return 'translate(' + x + ',' + y + ')';
         });
-
-    //ticks
 
     if (opt.minor_axis_ticks) {
         opt.minor_axis_ticks.forEach(function (v) {
@@ -113,7 +110,6 @@ function ternaryPlot(selector, userOpt) {
             .attr(lineAttributes(coord3, coord4))
             .classed('c-axis tick', true);
 
-        //tick labels
         axes.append('g')
             .attr('transform', function (d) {
                 return 'translate(' + coord1[0] + ',' + coord1[1] + ')';
@@ -200,7 +196,6 @@ function ternaryPlot(selector, userOpt) {
 
     plot.getPosition = coord;
     plot.getTripple = function (x, y) {
-        //TODO, get percentages for a give x, y
     }
 
     return plot;

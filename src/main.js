@@ -10,14 +10,12 @@
         let btn = $("#countForm"),
             generate = $("#generate"),
             dataBase = [],
-            inputDataCollection = [],
             func;
     
             btn.on("click", function (event) {
                 event.preventDefault();
                 d3.select("#plot").select("svg").remove();
                 dataBase.length = 0;
-                inputDataCollection.length = 0;
                 $(".generated").remove(),
                 $(".button-default").remove();
         
@@ -40,7 +38,6 @@
                     lambdaMin = parseFloat(inputLambdaMin),
                     setIterations = parseFloat(inputIterations),
                     rndNumber1, rndNumber2, rndNumber3;
-                    inputDataCollection.push();
         
                 generator(setIterations, rndNumber1, lambdaMin, setLambda1, rndNumber2, setLambda2, rndNumber3, setLambda3, func, a1, t, a2, a3, generate, dataBase);
         
