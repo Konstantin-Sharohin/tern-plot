@@ -9,7 +9,8 @@ $(window).on("load", function () {
         event.preventDefault();
         d3.select("#plot").select("svg").remove();
         dataBase.length = 0;
-        $(".generated").remove();
+        $(".generated").remove(),
+        $(".button-default").remove();
 
         let inputL1 = $("[name=lambda1]").val(),
             inputL2 = $("[name=lambda2]").val(),
@@ -19,6 +20,7 @@ $(window).on("load", function () {
             inputA3 = $("[name=a3]").val(),
             inputT = $("[name=t]").val(),
             inputLambdaMin = $("[name=lambdaRange]").val(),
+            inputIterations = $("[name=iterations]").val(),
             setLambda1 = parseFloat(inputL1),
             setLambda2 = parseFloat(inputL2),
             setLambda3 = parseFloat(inputL3),
@@ -27,9 +29,10 @@ $(window).on("load", function () {
             a3 = parseFloat(inputA3),
             t = parseFloat(inputT),
             lambdaMin = parseFloat(inputLambdaMin),
+            setIterations = parseFloat(inputIterations),
             rndNumber1, rndNumber2, rndNumber3;
 
-        for (let i = 0; i < 10000; i++) {
+        for (let i = 0; i < setIterations; i++) {
             rndNumber1 = math.random(lambdaMin, setLambda1);
             for (let j = 0; j < 1; j++) {
                 rndNumber2 = math.random(lambdaMin, setLambda2);
@@ -37,7 +40,7 @@ $(window).on("load", function () {
                     rndNumber3 = math.random(lambdaMin, setLambda3);
                     func = a1 * math.exp(-rndNumber1 * t) + a2 * math.exp(-rndNumber2 * t) + a3 * math.exp(-rndNumber3 * t);
                     let calculated = math.eval(func);
-                   if ((calculated > 0) && (calculated < 1e-10)) {
+                    if ((calculated > 0) && (calculated < 1e-11)) {
                         let newRow1 = "<tr class='generated'>" + "<td>" +
                             rndNumber1 + "</td>" +
                             "<td>" + rndNumber2 +
@@ -135,7 +138,7 @@ $(window).on("load", function () {
                     let coord2 = coord([v, 0 - v, -50]);
                     let coord3 = coord([-50, 0 - v, v]);
                     let coord4 = coord([0 - v, -50, v]);
-                    
+
                     axes.append("line")
                         .attr(lineAttributes(coord1, coord2))
                         .classed('a-axis minor-tick', true);
@@ -155,7 +158,7 @@ $(window).on("load", function () {
                 let coord2 = coord([v, 0 - v, -50]);
                 let coord3 = coord([-50, 0 - v, v]);
                 let coord4 = coord([0 - v, -50, v]);
-                
+
                 axes.append("line")
                     .attr(lineAttributes(coord1, coord2))
                     .classed('a-axis tick', true);
@@ -230,34 +233,34 @@ $(window).on("load", function () {
                     pos[1] = corners[0][1] * a + corners[1][1] * b + corners[2][1] * c;
                 }
                 return pos;
-                
+
             }
 
-            plot.data = function(data, accessor, bindBy){ //bind by is the dataset property used as an id for the join
+            plot.data = function (data, accessor, bindBy) { //bind by is the dataset property used as an id for the join
                 plot.dataset = data;
-        
+
                 var circles = svg.selectAll("circle")
-                    .data( data.map( function(d){ return coord(accessor(d)); }), function(d,i){
-                        if(bindBy){
+                    .data(data.map(function (d) { return coord(accessor(d)); }), function (d, i) {
+                        if (bindBy) {
                             return plot.dataset[i][bindBy];
                         }
                         return i;
-                    } );
-        
+                    });
+
                 circles.enter().append("circle");
-        
+
                 circles.transition().attr("cx", function (d) { return d[0]; })
                     .attr("cy", function (d) { return d[1]; })
                     .attr("r", 6);
-        
+
                 return this;
             }
-        
+
             plot.getPosition = coord;
-            plot.getTripple = function(x, y){
+            plot.getTripple = function (x, y) {
                 //TODO, get percentages for a give x, y
             }
-        
+
             return plot;
         }
 
@@ -271,13 +274,29 @@ $(window).on("load", function () {
                 bottom: 10,
                 right: 50
             },
-            axis_labels: ['lambda1', 'lambda2', 'lambda3'],
+            axis_labels: ['лямбда 1', 'лямбда 2', 'лямбда 3'],
             axis_ticks: d3.range(-50, 51, 10),
             minor_axis_ticks: d3.range(-50, 51, 5)
         };
 
-        ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3]}, 'label' );
-        
+        ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3] }, 'label');
+
         event.stopPropagation();
+
+        $(result).tableExport({
+            headers: true,
+            footers: true,
+            formats: ['xlsx', 'csv', 'txt'],
+            filename: 'id',
+            bootstrap: false,
+            position: 'bottom',
+            ignoreRows: null,
+            ignoreCols: null,
+            ignoreCSS: '.tableexport-ignore',
+            emptyCSS: '.tableexport-empty',
+            trimWhitespace: false
+        });
+
     });
+
 });

@@ -5,11 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ядерне датування</title>
-    <script src="Libraries/jquery.min.js"></script>
-    <script src="Libraries/math.js"></script>
-    <script src="Libraries/d3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Styles/ternPlotStyle.css" />
-    <script src='./src/main.js'></script>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./styles/tableexport.min.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/ternPlotStyle.css" />
 </head>
 
 <body>
@@ -17,35 +15,54 @@
         <form id='dataForm' action="#" method="post">
             <hgroup>
                 <h2>Розрахунок виразу</h2>
-                <h4>P0= <span>A1</span> * EXP(-<span>lambda1</span> * <span>t</span>) + <span>A2</span> * EXP(-<span>lambda2</span> * <span>t</span>) + <span>A3</span> * EXP(-<span>lambda3</span> * <span>t</span>)</h4>
+                <h4>P<sub>0</sub>= <span>A<sub>1</sub></span> * EXP(-<span>lambda<sub>1</sub></span> * <span>t</span>) + <span>A<sub>2</sub></span> * EXP(-<span>lambda<sub>2</sub></span>
+                    * <span>t</span>) + <span>A<sub>3</sub></span> * EXP(-<span>lambda<sub>3</sub></span> * <span>t</span>)</h4>
             </hgroup>
             <div class="data"><span class="enterValues">Введіть значення</span>
-                <div><span>lambda1</span> = <input type="text" class="input" name="lambda1" form="dataForm" value='4.92E-11' required autofocus></div>
-                <div><span>lambda2</span> = <input type="text" class="input" name="lambda2" form="dataForm" value='1.21E-01' required></div>
-                <div><span>lambda3</span> = <input type="text" class="input" name="lambda3" form="dataForm" value='9.87E+02'required></div>
-                <div><span>A1</span> = <input type="text" class="input" name="a1" form="dataForm" value='1.0000000000000000000000' required></div>
-                <div><span>A2</span> = <input type="text" class="input" name="a2" form="dataForm" value='-1.000122608749350000000000000' required></div>
-                <div><span>A3</span> = <input type="text" class="input" name="a3" form="dataForm" value='0.0001226087493510350000000' required></div>
-                <div><span>t</span> = <input type="text" class="input" name="t" form="dataForm" value='1.0E-10' required></div>
-                <div><span>Діапазон</span> = <input type="text" class="input" name="lambdaRange" form="dataForm" value='10' required></div>
+                <div><span>лямбда<sub>1</sub></span> = <input type="text" class="input" name="lambda1" form="dataForm" value='4.92E-11'
+                        required autofocus></div>
+                <div><span>лямбда<sub>2</sub></span> = <input type="text" class="input" name="lambda2" form="dataForm" value='1.21E-01'
+                        required></div>
+                <div><span>лямбда<sub>3</sub></span> = <input type="text" class="input" name="lambda3" form="dataForm" value='9.87E+02'
+                        required></div>
+                <div><span>A<sub>1</sub></span> = <input type="text" class="input" name="a1" form="dataForm" value='1.0000000000000000000000'
+                        required></div>
+                <div><span>A<sub>2</sub></span> = <input type="text" class="input" name="a2" form="dataForm" value='-1.000122608749350000000000000'
+                        required></div>
+                <div><span>A<sub>3</sub></span> = <input type="text" class="input" name="a3" form="dataForm" value='0.0001226087493510350000000'
+                        required></div>
+                <div><span>t</span> = <input type="text" class="input" name="t" form="dataForm" value='1.0E-10'
+                        required></div>
+                <div><span>Діапазон&nbsp;ГВЧ</span> = <input type="text" class="input" name="lambdaRange" form="dataForm"
+                        value='10' required></div>
+                <div><span>Ітерації&nbsp;ГВЧ</span> = <input type="text" class="input" name="iterations" form="dataForm"
+                        value='10000' required></div>
             </div>
             <button id="countForm" type="submit" form="dataForm">Розрахувати</button>
+
         </form>
     </header>
     <div class="goalTitle">Завдання:
         <hr>
     </div>
-    <div class="goal">Знайти значення <span>lambda</span>, при яких вираз для <span>Р0</span> перейде в область
+    <div class="goal">Знайти значення <span>лямбда</span>, при яких вираз для <span>Р<sub>0</sub></span> перейде в область
         додатних значень</div>
     <div id="plot"></div>
     <table id="result">
         <tr id="generate">
-            <th>lambda<sub>1</sub></th>
-            <th>lambda<sub>2</sub></th>
-            <th>lambda<sub>3</sub></th>
+            <th>лямбда<sub>1</sub></th>
+            <th>лямбда<sub>2</sub></th>
+            <th>лямбда<sub>3</sub></th>
             <th>Значення виразу</th>
         </tr>
     </table>
+    <script src='./vendors/jquery.min.js'></script>
+    <script src='./vendors/math.js'></script>
+    <script src='./vendors/d3.min.js'></script>
+    <script src='./vendors/xlsx.core.min.js'></script>
+    <script src='./vendors/FileSaver.min.js'></script>
+    <script src='./vendors/tableexport.min.js'></script>
+    <script src='./src/index.js'></script>
 </body>
 
 </html>
