@@ -1,0 +1,25 @@
+{
+  "name": "Nuclear Dating",
+  "short_name": "ND",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Adjustment of nuclear constants",
+  "icons": [
+    {
+      "src": "./icons/atom_16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "./icons/atom_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./icons/microscope_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
