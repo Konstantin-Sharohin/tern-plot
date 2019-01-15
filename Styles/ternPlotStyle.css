@@ -22,11 +22,18 @@ form {
 }
 
 .data {
+    display: flex;
+    flex-direction: column;
     color: rgb(22, 95, 22);
     text-align: right;
     padding-right: 6rem;
     padding: 1rem;
     background-color: rgba(253, 249, 249, 0.1)
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .goalTitle {

@@ -26,7 +26,7 @@
                     inputA2 = $("[name=a2]").val(),
                     inputA3 = $("[name=a3]").val(),
                     inputT = $("[name=t]").val(),
-                    inputLambdaMin = $("[name=lambdaRange]").val(),
+                    inputLambdaRange = $("[name=lambdaRange]").val(),
                     inputIterations = $("[name=iterations]").val(),
                     setLambda1 = parseFloat(inputL1),
                     setLambda2 = parseFloat(inputL2),
@@ -35,7 +35,7 @@
                     a2 = parseFloat(inputA2),
                     a3 = parseFloat(inputA3),
                     t = parseFloat(inputT),
-                    lambdaMin = parseFloat(inputLambdaMin),
+                    lambdaRange = (parseFloat(inputLambdaRange)) / 100,
                     setIterations = parseFloat(inputIterations),
                     rndNumber1, rndNumber2, rndNumber3;
                     Big(setLambda1);
@@ -48,7 +48,7 @@
                     console.log('setLambda1 ' + setLambda1 + 'setLambda2 ' + 
                     setLambda2 + 'setLambda3 ' + setLambda3 + 'a1 ' + a1 + 't ' + t + 'a2 ' + a2 + 'a3 ' + a3);
         
-                generator(setIterations, rndNumber1, lambdaMin, setLambda1, rndNumber2, setLambda2, rndNumber3, setLambda3, func, a1, t, a2, a3, generate, dataBase);
+                generator(setIterations, rndNumber1, lambdaRange, setLambda1, rndNumber2, setLambda2, rndNumber3, setLambda3, func, a1, t, a2, a3, generate, dataBase);
         
                 ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3] }, 'label');
         
