@@ -2,53 +2,54 @@
 
     const App = window.App || {};
 
-    function generator(setIterations, rndNumber1, lambdaRange, setLambda1, rndNumber2, setLambda2, rndNumber3, setLambda3, func, a1, t, a2, a3, generate, dataBase) {
+    function generator(inputFormula, setX, setY, setZ, setIterations, lambdaRange, generate, dataBase) {
 
-        let range1 = setLambda1 * lambdaRange,
-            lambda1Min = setLambda1 - range1,
-            lambda1Max = setLambda1 + range1;
+        let range1 = setX * lambdaRange,
+            XMin = setX - range1,
+            XMax = setX + range1;
 
-        let range2 = setLambda2 * lambdaRange,
-            lambda2Min = setLambda2 - range2,
-            lambda2Max = setLambda2 + range2;
+        let range2 = setY * lambdaRange,
+            YMin = setY - range2,
+            YMax = setY + range2;
 
-        let range3 = setLambda3 * lambdaRange,
-            lambda3Min = setLambda3 - range3,
-            lambda3Max = setLambda3 + range3;
+        let range3 = setZ * lambdaRange,
+            ZMin = setZ - range3,
+            ZMax = setZ + range3;
+
+        let func;
 
         for (let i = 0; i < setIterations; i++) {
-            rndNumber1 = math.random(lambda1Min, lambda1Max);
-            Big(rndNumber1);
+            x = math.random(XMin, XMax);
+
             for (let j = 0; j < 1; j++) {
-                rndNumber2 = math.random(lambda2Min, lambda2Max);
-                Big(rndNumber2);
+                y = math.random(YMin, YMax);
+
                 for (let k = 0; k < 1; k++) {
-                    rndNumber3 = math.random(lambda3Min, lambda3Max);
-                    Big(rndNumber3);
-                    func = a1 * math.exp(-rndNumber1 * t) - a2 * math.exp(-rndNumber2 * t) + a3 * math.exp(-rndNumber3 * t);
+                    z = math.random(ZMin, ZMax);
+
+                    func = inputFormula;
                     let calculated = math.eval(func);
                     console.log('calculated: ' + calculated);
                     if (calculated > 0) {
-                    
+
                         let newRow1 = "<tr class='generated'>" + "<td>" +
-                        rndNumber1 + "</td>" +
-                            "<td>" + rndNumber2 +
+                        x + "</td>" +
+                            "<td>" + y +
                             "</td>" +
                             "<td>" +
-                            rndNumber3 + "</td>" + "<td>" + calculated + "</td>" +
+                            z + "</td>" + "<td>" + calculated + "</td>" +
                             "</tr>";
                         generate.after(newRow1);
                         dataBase.push({
-                            "lambda1": rndNumber1,
-                            "lambda2": rndNumber2,
-                            "lambda3": rndNumber3,
+                            "lambda1": x,
+                            "lambda2": y,
+                            "lambda3": z,
                             "label": "point" + i
                         });
                    }
                 }
             }
         }
-        console.log('lambda1Min: ' + lambda1Min + 'rndNumber1: ' + rndNumber1 + 'rndNumber2: ' + rndNumber2 + 'rndNumber3: ' + rndNumber3);
     };
 
     App.generator = generator;

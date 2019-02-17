@@ -16,21 +16,27 @@
         <form id='dataForm' action="#" method="post">
             <hgroup>
                 <h2>Розрахунок виразу</h2>
-                <h4>P<sub>0</sub>= <span>A<sub>1</sub></span> * EXP(-<span>lambda<sub>1</sub></span> * <span>t</span>) - <span>A<sub>2</sub></span> * EXP(-<span>lambda<sub>2</sub></span>
-                    * <span>t</span>) + <span>A<sub>3</sub></span> * EXP(-<span>lambda<sub>3</sub></span> * <span>t</span>)</h4>
+                <div class="row">
+                    <div class="input">
+                        <span>лямбда<sub>1</sub></span> =
+                    </div>
+                    <div class="input"><input type="text" name="formula" form="dataForm" value='1 * EXP(-x * 0.5) - 1.497 * EXP(-y * 0.5) + 0.497 * EXP(-z * 0.5)' maxlength="30"
+                        required autofocus>
+                    </div>
+                </div>
             </hgroup>
             <div class="data"><span class="enterValues">Введіть значення</span>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>1</sub></span> = 
+                        <span>лямбда<sub>1</sub></span> =
                     </div>
                     <div class="input"><input type="text" name="lambda1" form="dataForm" value='4.92E-11'
-                        required autofocus>
+                        required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>2</sub></span> = 
+                        <span>лямбда<sub>2</sub></span> =
                     </div>
                     <div class="input"><input type="text" name="lambda2" form="dataForm" value='1.21E-01'
                         required>
@@ -38,7 +44,7 @@
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>3</sub></span> = 
+                        <span>лямбда<sub>3</sub></span> =
                     </div>
                     <div class="input"><input type="text" name="lambda3" form="dataForm" value='3.63E-01'
                         required>
@@ -46,39 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>A<sub>1</sub></span> = 
-                    </div>
-                    <div class="input"><input type="text" name="a1" form="dataForm" value='1.000'
-                        required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input">
-                        <span>A<sub>2</sub></span> = 
-                    </div>
-                    <div class="input"><input type="text" name="a2" form="dataForm" value='1.497'
-                        required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input">
-                        <span>A<sub>3</sub></span> = 
-                    </div>
-                    <div class="input"><input type="text" name="a3" form="dataForm" value='0.497'
-                        required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input">
-                        <span>t</span> = 
-                    </div>
-                    <div class="input"><input type="text" name="t" form="dataForm" value='0.5'
-                        required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input">
-                        <span>ГВЧ (%, 1-100)</span> = 
+                        <span>ГВЧ (%, 1-100)</span> =
                     </div>
                     <div class="input"><input type="number" name="lambdaRange" form="dataForm"
                         value='10' min='1' max='1000' required>
@@ -86,7 +60,7 @@
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>Ітерації&nbsp;ГВЧ</span> = 
+                        <span>Ітерації&nbsp;ГВЧ</span> =
                     </div>
                     <div class="input"><input type="text" name="iterations" form="dataForm"
                         value='100' required>
@@ -121,7 +95,7 @@
     <script src='./src/generator.js'></script>
     <script src='./src/plot.js'></script>
     <script src='./src/main.js'></script>
-    
+
 </body>
 
 </html>
