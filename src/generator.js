@@ -2,7 +2,7 @@
 
     const App = window.App || {};
 
-    function generator(inputFormula, setX, setY, setZ, setIterations, lambdaRange, generate, dataBase) {
+    function generator(replacedFormula, setX, setY, setZ, setIterations, lambdaRange, limitation, generate, dataBase) {
 
         let range1 = setX * lambdaRange,
             XMin = setX - range1,
@@ -27,10 +27,10 @@
                 for (let k = 0; k < 1; k++) {
                     z = math.random(ZMin, ZMax);
 
-                    func = inputFormula;
+                    func = replacedFormula;
                     let calculated = math.eval(func);
                     console.log('calculated: ' + calculated);
-                    if (calculated > 0) {
+                    if (calculated > limitation) {
 
                         let newRow1 = "<tr class='generated'>" + "<td>" +
                         x + "</td>" +

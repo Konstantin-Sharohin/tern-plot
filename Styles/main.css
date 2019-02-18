@@ -10,33 +10,25 @@ html {
     padding: 15px;
 }
 
-form {
-    background-color: #0099cc;
-    color: #ffffff;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+body {
+    background: #fff1e0;
+    min-width: 780px;
+    overflow: auto;
 }
 
-.data {
-    display: flex;
+.input-formula-container {
     flex-direction: column;
-    color: rgb(22, 95, 22);
-    text-align: right;
-    padding-right: 6rem;
-    padding: 1rem;
-    background-color: rgba(253, 249, 249, 0.1)
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
+.input-formula {
+    margin-bottom: 1em;
 }
 
-.goalTitle {
+.input.instructions {
+    text-align: left;
+}
+
+.goal-title {
     font-weight: bold;
     font-size: 1.3rem;
     padding: 0.5rem 0.5rem;
@@ -63,16 +55,50 @@ span {
     filter: drop-shadow(0 0 4px rgb(252, 251, 251));
 }
 
-.enterValues {
-    color: rgb(211, 212, 211);
+/*INPUT VALUES START*/
+form {
+    background-color: #0099cc;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    padding: 0.5em;
+    line-height: 0.5em;
+}
+
+.input-values-title {
+    color: rgb(255, 255, 255);
     text-align: left;
     text-transform: uppercase;
     filter: none;
 }
 
+.data {
+    display: flex;
+    flex-direction: column;
+    color: rgb(22, 95, 22);
+    text-align: right;
+    background-color: rgba(253, 249, 249, 0.1)
+}
 
+.row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+}
 
-#countForm {
+.input.data {
+    margin-left: 0.5em;
+}
+/*INPUT VALUES END*/
+
+#countFormButton {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     font-weight: bold;
     background: #f4df41;
@@ -86,31 +112,16 @@ span {
     height: 40px;
 }
 
-#countForm:active {
+#countFormButton:active {
     top: 1px;
     box-shadow: none;
     outline: none;
 }
 
+/*PLOT START*/
 #plot {
     border: solid #33b5e5;
     text-align: center;
-}
-
-body {
-    background: #fff1e0;
-    min-width: 775px;
-    overflow: auto;
-}
-
-table {
-    width: 100%;
-    text-align: center;
-    border: solid;
-    padding: 15px;
-}
-
-#plot {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -154,4 +165,12 @@ circle {
     fill: rgb(244, 244, 245);
     stroke: rgb(87, 66, 202);
     stroke-width: 1px;
+}
+/*PLOT END*/
+
+table {
+    width: 100%;
+    text-align: center;
+    border: solid;
+    padding: 15px;
 }

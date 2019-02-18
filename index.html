@@ -8,70 +8,79 @@
     <title>Ядерне датування</title>
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="stylesheet" type="text/css" href="./styles/tableexport.min.css" />
-    <link rel="stylesheet" type="text/css" href="./styles/ternPlotStyle.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/main.css" />
 </head>
 
 <body>
     <header>
         <form id='dataForm' action="#" method="post">
             <hgroup>
-                <h2>Розрахунок виразу</h2>
-                <div class="row">
-                    <div class="input">
-                        <span>лямбда<sub>1</sub></span> =
-                    </div>
-                    <div class="input"><input type="text" name="formula" form="dataForm" value='1 * EXP(-x * 0.5) - 1.497 * EXP(-y * 0.5) + 0.497 * EXP(-z * 0.5)' maxlength="30"
+                <h2>Введіть вираз</h2>
+                <div class="row input-formula-container">
+                    <div class="input-formula"><input type="text" name="formula" form="dataForm" value='1^(-x * 0.5) - 1.497^(-y * 0.5) + 0.497^(-z * 0.5)' size="45" maxlength="55"
                         required autofocus>
+                    </div>
+                    <div class="input instructions">
+                        <p>Ви можете ввести в рівнянні змінні <span>x</span>, <span>y</span>, <span>z</span> або вказати їх у відповідних полях вводу.</p>
+                        <p>Допустимі оператори в рівнянні: <span>+</span> (плюс) <span>-</span> (мінус) <span>*</span> (множення) <span>/</span> (ділення) <span>^</span> (ступінь, також <span>е</span>)</p>
                     </div>
                 </div>
             </hgroup>
-            <div class="data"><span class="enterValues">Введіть значення</span>
+            <div class="data"><span class="input-values-title">Введіть значення</span>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>1</sub></span> =
+                        <span>x</span> =
                     </div>
-                    <div class="input"><input type="text" name="lambda1" form="dataForm" value='4.92E-11'
-                        required>
+                    <div class="input data"><input type="text" name="x" form="dataForm" value='4.92E-11'
+                        size="15" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>2</sub></span> =
+                        <span>y</span> =
                     </div>
-                    <div class="input"><input type="text" name="lambda2" form="dataForm" value='1.21E-01'
-                        required>
+                    <div class="input data"><input type="text" name="y" form="dataForm" value='1.21E-01'
+                        size="15" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input">
-                        <span>лямбда<sub>3</sub></span> =
+                        <span>z</span> =
                     </div>
-                    <div class="input"><input type="text" name="lambda3" form="dataForm" value='3.63E-01'
-                        required>
+                    <div class="input data"><input type="text" name="z" form="dataForm" value='3.63E-01'
+                        size="15" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input">
                         <span>ГВЧ (%, 1-100)</span> =
                     </div>
-                    <div class="input"><input type="number" name="lambdaRange" form="dataForm"
-                        value='10' min='1' max='1000' required>
+                    <div class="input data"><input type="text" name="range" form="dataForm"
+                        value='10' size="15" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input">
                         <span>Ітерації&nbsp;ГВЧ</span> =
                     </div>
-                    <div class="input"><input type="text" name="iterations" form="dataForm"
-                        value='100' required>
+                    <div class="input data"><input type="text" name="iterations" form="dataForm"
+                        value='100' size="15" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <span>Обмеження результату</span> =
+                    </div>
+                    <div class="input data"><input type="text" name="limitation" form="dataForm"
+                        value='0' size="15" required>
                     </div>
                 </div>
             </div>
-            <button id="countForm" type="submit" form="dataForm">Розрахувати</button>
+            <button id="countFormButton" type="submit" form="dataForm">Розрахувати</button>
 
         </form>
     </header>
-    <div class="goalTitle">Завдання:
+    <div class="goal-title">Завдання:
         <hr>
     </div>
     <div class="goal">Знайти значення <span>лямбда</span>, при яких вираз для <span>Р<sub>0</sub></span> перейде в область

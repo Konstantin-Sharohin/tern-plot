@@ -38,7 +38,7 @@ function ternaryPlot(selector, userOpt) {
 
     let corners = [
         [opt.margin.left, h + opt.margin.top], // a
-        [w + opt.margin.left, h + opt.margin.top], //b 
+        [w + opt.margin.left, h + opt.margin.top], //b
         [(w / 2) + opt.margin.left, opt.margin.top]
     ];
 
@@ -209,7 +209,7 @@ let plot_opts = {
         bottom: 10,
         right: 50
     },
-    axis_labels: ['лямбда 1', 'лямбда 2', 'лямбда 3'],
+    axis_labels: ['X', 'Y', 'Z'],
     axis_ticks: d3.range(-50, 51, 10),
     minor_axis_ticks: d3.range(-50, 51, 5)
 };
