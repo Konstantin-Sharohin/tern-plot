@@ -15,14 +15,16 @@
     <header>
         <form id='dataForm' action="#" method="post">
             <hgroup>
-                <h2>Введіть вираз</h2>
+                <h2>ВВЕДІТЬ ВИРАЗ</h2>
                 <div class="row input-formula-container">
-                    <div class="input-formula"><input type="text" name="formula" form="dataForm" value='1^(-x * 0.5) - 1.497^(-y * 0.5) + 0.497^(-z * 0.5)' size="45" maxlength="55"
+                    <div class="input-formula"><input type="text" name="formula" form="dataForm" pattern="[0-9]{0,70}" value='a^(-x * t) - b^(-y * t) + c^(-z * t)' size="45" maxlength="70"
                         required autofocus>
                     </div>
-                    <div class="input instructions">
-                        <p>Ви можете ввести в рівнянні змінні <span>x</span>, <span>y</span>, <span>z</span> або вказати їх у відповідних полях вводу.</p>
-                        <p>Допустимі оператори в рівнянні: <span>+</span> (плюс) <span>-</span> (мінус) <span>*</span> (множення) <span>/</span> (ділення) <span>^</span> (ступінь, також <span>е</span>)</p>
+                    <div class="input-instructions">
+                        <p>В рівнянні необхідно вказати змінні і ввести їх значення у відповідних полях вводу.</p>
+                        <p>Введені значення змінних <span>X</span>, <span>Y</span> та <span>Z</span> "розмиваються" в діапазоні, вказаному в полі <span>ГВЧ</span>.</p>
+                        <p>Десятковий роздільник необхідно вводити (наприклад) як <span>7.5</span>, але не <span>7,5</span>.</p>
+                        <p class="conditional-operators"><span class="conditional-operators-font">Деякі допустимі оператори в рівнянні:</span><br><span>+</span> плюс<br><span>–</span> мінус<br><span>*</span> множення<br><span>/</span> ділення<br><span>^</span> возведення у ступінь (також <span>E</span> або <span>e</span>)<br><span>log</span> отримання логарифму<br><span>sqrt</span> отримання кореня<br><span>sin</span> отримання синуса<br><span>cos</span> отримання косинуса<br></p>
                     </div>
                 </div>
             </hgroup>
@@ -53,6 +55,38 @@
                 </div>
                 <div class="row">
                     <div class="input">
+                        <span>a</span> =
+                    </div>
+                    <div class="input data"><input type="text" name="a" form="dataForm" value='1.0'
+                        size="15" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <span>b</span> =
+                    </div>
+                    <div class="input data"><input type="text" name="b" form="dataForm" value='1.497'
+                        size="15" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <span>c</span> =
+                    </div>
+                    <div class="input data"><input type="text" name="c" form="dataForm" value='0.497'
+                        size="15" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
+                        <span>t</span> =
+                    </div>
+                    <div class="input data"><input type="text" name="t" form="dataForm" value='0.5'
+                        size="15" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input">
                         <span>ГВЧ (%, 1-100)</span> =
                     </div>
                     <div class="input data"><input type="text" name="range" form="dataForm"
@@ -68,8 +102,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input">
-                        <span>Обмеження результату</span> =
+                    <div class="input tooltip">
+                        <span>Умова (значення виразу)</span> =
+                        <span class="tooltiptext">Будуть відображені значення "x" "y" "z", які задовільняють введеному значенню виразу</span>
                     </div>
                     <div class="input data"><input type="text" name="limitation" form="dataForm"
                         value='0' size="15" required>
@@ -83,14 +118,14 @@
     <div class="goal-title">Завдання:
         <hr>
     </div>
-    <div class="goal">Знайти значення <span>лямбда</span>, при яких вираз для <span>Р<sub>0</sub></span> перейде в область
+    <div class="goal">Знайти значення <span>змінних</span>, при яких вираз для <span>Р<sub>0</sub></span> перейде в область
         додатних значень</div>
     <div id="plot"></div>
     <table id="result">
         <tr id="generate">
-            <th>лямбда<sub>1</sub></th>
-            <th>лямбда<sub>2</sub></th>
-            <th>лямбда<sub>3</sub></th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Z</th>
             <th>Значення виразу</th>
         </tr>
     </table>

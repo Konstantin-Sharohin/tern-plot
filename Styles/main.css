@@ -11,11 +11,12 @@ html {
 }
 
 body {
-    background: #fff1e0;
+    background: rgb(255, 241, 224);
     min-width: 780px;
     overflow: auto;
 }
 
+/*MAIN FORMULA START*/
 .input-formula-container {
     flex-direction: column;
 }
@@ -24,8 +25,30 @@ body {
     margin-bottom: 1em;
 }
 
-.input.instructions {
+input[name="formula"] {
+    font-size: 1em;
+    font-weight: bold;
+}
+/*MAIN FORMULA END*/
+
+.input-instructions {
     text-align: left;
+    margin: 1em 0px 0px 0px;
+    padding: 0px;
+    background-color: rgba(140, 150, 156, 0.774);
+}
+
+.conditional-operators {
+    text-align: left;
+    background-color: rgba(155, 165, 164, 0.685)
+}
+
+.conditional-operators-font {
+    color: rgb(43, 44, 46);
+}
+
+p {
+    margin: 1em 0px 0px 0px;
 }
 
 .goal-title {
@@ -33,13 +56,6 @@ body {
     font-size: 1.3rem;
     padding: 0.5rem 0.5rem;
     background-color: rgb(151, 151, 167);
-}
-
-hr {
-    border: none;
-    color: rgb(216, 232, 236);
-    background-color: rgb(216, 232, 236);
-    height: 2px;
 }
 
 .goal {
@@ -50,12 +66,19 @@ hr {
     background-color: rgb(151, 151, 167);
 }
 
+hr {
+    border: none;
+    color: rgb(216, 232, 236);
+    background-color: rgb(216, 232, 236);
+    height: 2px;
+}
+
 span {
     color: rgb(172, 21, 21);
     filter: drop-shadow(0 0 4px rgb(252, 251, 251));
 }
 
-/*INPUT VALUES START*/
+/*OTHER INPUT VALUES START*/
 form {
     background-color: #0099cc;
     color: #ffffff;
@@ -70,6 +93,7 @@ form {
 input[type="text"] {
     padding: 0.5em;
     line-height: 0.5em;
+    font-weight: bold;
 }
 
 .input-values-title {
@@ -82,7 +106,6 @@ input[type="text"] {
 .data {
     display: flex;
     flex-direction: column;
-    color: rgb(22, 95, 22);
     text-align: right;
     background-color: rgba(253, 249, 249, 0.1)
 }
@@ -96,6 +119,28 @@ input[type="text"] {
 .input.data {
     margin-left: 0.5em;
 }
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    top: -5px;
+    right: 105%;
+    width: 15em;
+    background-color: rgb(253, 253, 253);
+    color: rgb(214, 91, 91);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    z-index: 1;
+  }
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
 /*INPUT VALUES END*/
 
 #countFormButton {

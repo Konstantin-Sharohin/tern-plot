@@ -17,7 +17,7 @@ function ternaryPlot(selector, userOpt) {
             bottom: 10,
             right: 10
         },
-        axis_labels: ['A', 'B', 'C'],
+        axis_labels: ['X', 'Y', 'Z'],
         axis_ticks: [-50, -30, -10, 0, 10, 30, 50],
         tickLabelMargin: 10,
         axisLabelMargin: 40

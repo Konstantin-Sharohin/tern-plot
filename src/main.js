@@ -22,30 +22,38 @@
                 x = $("[name=x]").val(),
                 y = $("[name=y]").val(),
                 z = $("[name=z]").val(),
-                inputLambdaRange = $("[name=range]").val(),
+                a = $("[name=a]").val(),
+                b = $("[name=b]").val(),
+                c = $("[name=c]").val(),
+                t = $("[name=t]").val(),
+                inputRange = $("[name=range]").val(),
                 inputIterations = $("[name=iterations]").val(),
                 inputLimitation = $("[name=limitation]").val(),
                 setX = parseFloat(x),
                 setY = parseFloat(y),
                 setZ = parseFloat(z),
-                lambdaRange = (parseFloat(inputLambdaRange)) / 100,
+                setA = parseFloat(a),
+                setB = parseFloat(b),
+                setC = parseFloat(c),
+                setT = parseFloat(t),
+                range = (parseFloat(inputRange)) / 100,
                 setIterations = parseFloat(inputIterations),
                 limitation = parseFloat(inputLimitation);
+                console.log(setA);
 
-                let replacedFormula = inputFormula.replace(/(?<=\W+)x(?=\W+)/gi, x);
-                console.log(replacedFormula);
-                replacedFormula = replacedFormula.replace(/(?<=\W+)y(?=\W+)/gi, y);
-                console.log(replacedFormula);
-                replacedFormula = replacedFormula.replace(/(?<=\W+)z(?=\W+)/gi, z);
-                console.log(replacedFormula);
+                let replacedFormula = inputFormula.replace(/x/gi, setX);
+                replacedFormula = replacedFormula.replace(/y/gi, setY);
+                replacedFormula = replacedFormula.replace(/z/gi, setZ);
+                replacedFormula = replacedFormula.replace(/a/gi, setA);
+                replacedFormula = replacedFormula.replace(/b/gi, setB);
+                replacedFormula = replacedFormula.replace(/c/gi, setC);
+                replacedFormula = replacedFormula.replace(/(?<=\W+)t/gi, setT);
                 replacedFormula = replacedFormula.replace(/EXP/gi, '^');
-            //Big(setLambda1);
-            //Big(setLambda2);
-            //Big(setLambda3);
+                console.log(replacedFormula);
 
-            generator(replacedFormula, setX, setY, setZ, setIterations, lambdaRange, limitation, generate, dataBase);
+            generator(replacedFormula, setX, setY, setZ, setIterations, range, limitation, generate, dataBase);
 
-            ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.lambda1, d.lambda2, d.lambda3] }, 'label');
+            ternaryPlot('#plot', plot_opts).data(dataBase, function (d) { return [d.x, d.y, d.z] }, 'label');
 
             event.stopPropagation();
 

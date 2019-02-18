@@ -2,17 +2,17 @@
 
     const App = window.App || {};
 
-    function generator(replacedFormula, setX, setY, setZ, setIterations, lambdaRange, limitation, generate, dataBase) {
+    function generator(replacedFormula, setX, setY, setZ, setIterations, range, limitation, generate, dataBase) {
 
-        let range1 = setX * lambdaRange,
+        let range1 = setX * range,
             XMin = setX - range1,
             XMax = setX + range1;
 
-        let range2 = setY * lambdaRange,
+        let range2 = setY * range,
             YMin = setY - range2,
             YMax = setY + range2;
 
-        let range3 = setZ * lambdaRange,
+        let range3 = setZ * range,
             ZMin = setZ - range3,
             ZMax = setZ + range3;
 
@@ -41,9 +41,9 @@
                             "</tr>";
                         generate.after(newRow1);
                         dataBase.push({
-                            "lambda1": x,
-                            "lambda2": y,
-                            "lambda3": z,
+                            "x": x,
+                            "y": y,
+                            "z": z,
                             "label": "point" + i
                         });
                    }
